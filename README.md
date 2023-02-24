@@ -29,6 +29,7 @@
 [![Badge Downloads]][Releases]
 
 [![Button Manual]][Manual]   
+[![Button Libraries]][Libraries]
 
 </div>
     
@@ -46,6 +47,7 @@
 [Main]: https://github.com/Aptivi/Syndian/actions/workflows/build-win.yml
 [Main Linux]: https://github.com/Aptivi/Syndian/actions/workflows/build-linux.yml
 
+[Libraries]: https://aptivi.gitbook.io/syndian-manual/project-dependencies
 [Manual]: https://aptivi.gitbook.io/syndian-manual/
 
 <!----------------------------------[ Badges ]--------------------------------->
@@ -61,4 +63,5 @@
 
 <!---------------------------------[ Buttons ]--------------------------------->
 
+[Button Libraries]: https://img.shields.io/badge/Libraries-EA8220?style=for-the-badge&logoColor=white&logo=AzureArtifacts
 [Button Manual]: https://img.shields.io/badge/Docs-blueviolet?style=for-the-badge&logoColor=white&logo=GitBook
