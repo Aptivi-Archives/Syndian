@@ -1,0 +1,176 @@
+{
+  "sitemap": {
+    "baseUrl": "https://aptivi.github.io/Syndian/"
+  },
+  "homepages": [],
+  "source_base_path": "/github/workspace/DocGen",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Syndian.Instance.RSSArticle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Syndian.Instance.RSSArticle.html",
+          "hash": "dOmpvjqCTdQjXJ0A09PJikea7QkeKmyhuBxkF7Q9WBY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Syndian.Instance.RSSFeed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Syndian.Instance.RSSFeed.html",
+          "hash": "BbSuKQQ9fVxJNkfOBUFkw1m54oUyUhHU4mm38p9bo78="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Syndian.Instance.RSSFeedType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Syndian.Instance.RSSFeedType.html",
+          "hash": "yRDkOdqxfPX4cyUQ4heMeS+yZx8PcMTrAwKb6KrI+iY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Syndian.Instance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Syndian.Instance.html",
+          "hash": "lDbIqiln3driai/45XfrTANsuP1xcCmWL9SQbJexmy4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Syndian.RSSTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Syndian.RSSTools.html",
+          "hash": "XQF9yQxjNLEU9stRCCwcf4NIxiTA/ROeHX4lvXeDjD8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Syndian.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Syndian.html",
+          "hash": "wXFUOCnygvjyeNftosOkKDslUqQcMLj6/xBbtaUcF+Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "q9k71I2MDFiRCwGIkC2kA7b6Be5hC3DbNzFVJ8zkYKw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "RkNV+GITuMpV0Ah2VhZOglEoiXOJ3oar927bA/saPUU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "I+pv3Iqrgu9TiGLY868Oeb6JiuvTgKVc+pA7awAVlPc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 1,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 6,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
