@@ -154,14 +154,10 @@ namespace Syndian.Instance
             if (_FeedArticles.Count != 0 & Articles.Count != 0)
             {
                 if (!_FeedArticles[0].Equals(Articles[0]))
-                {
                     _FeedArticles = Articles;
-                }
             }
             else
-            {
                 _FeedArticles = Articles;
-            }
         }
 
     }

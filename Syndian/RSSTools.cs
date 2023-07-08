@@ -24,7 +24,6 @@
  * 
  */
 
-using Extensification.DictionaryExts;
 using HtmlAgilityPack;
 using Syndian.Instance;
 using System;
@@ -52,52 +51,43 @@ namespace Syndian
             switch (FeedType)
             {
                 case RSSFeedType.RSS2:
+                    foreach (XmlNode Node in FeedNode[0]) // <channel>
                     {
-                        foreach (XmlNode Node in FeedNode[0]) // <channel>
+                        foreach (XmlNode Child in Node.ChildNodes) // <item>
                         {
-                            foreach (XmlNode Child in Node.ChildNodes) // <item>
+                            if (Child.Name == "item")
                             {
-                                if (Child.Name == "item")
-                                {
-                                    var Article = MakeArticleFromFeed(Child);
-                                    Articles.Add(Article);
-                                }
+                                var Article = MakeArticleFromFeed(Child);
+                                Articles.Add(Article);
                             }
                         }
-
-                        break;
                     }
+
+                    break;
                 case RSSFeedType.RSS1:
+                    foreach (XmlNode Node in FeedNode[0]) // <channel> or <item>
                     {
-                        foreach (XmlNode Node in FeedNode[0]) // <channel> or <item>
+                        if (Node.Name == "item")
                         {
-                            if (Node.Name == "item")
-                            {
-                                var Article = MakeArticleFromFeed(Node);
-                                Articles.Add(Article);
-                            }
+                            var Article = MakeArticleFromFeed(Node);
+                            Articles.Add(Article);
                         }
-
-                        break;
                     }
+
+                    break;
                 case RSSFeedType.Atom:
+                    foreach (XmlNode Node in FeedNode[0]) // <feed>
                     {
-                        foreach (XmlNode Node in FeedNode[0]) // <feed>
+                        if (Node.Name == "entry")
                         {
-                            if (Node.Name == "entry")
-                            {
-                                var Article = MakeArticleFromFeed(Node);
-                                Articles.Add(Article);
-                            }
+                            var Article = MakeArticleFromFeed(Node);
+                            Articles.Add(Article);
                         }
-
-                        break;
                     }
 
+                    break;
                 default:
-                    {
-                        throw new RSSException("Invalid RSS feed type.");
-                    }
+                    throw new RSSException("Invalid RSS feed type.");
             }
             return Articles;
         }
@@ -118,24 +108,16 @@ namespace Syndian
             {
                 // Check the title
                 if (ArticleNode.Name == "title")
-                {
                     // Trimming newlines and spaces is necessary, since some RSS feeds (GitHub commits) might return string with trailing and leading spaces and newlines.
                     Title = ArticleNode.InnerText.Trim(Convert.ToChar(Convert.ToChar(13)), Convert.ToChar(Convert.ToChar(10)), ' ');
-                }
 
                 // Check the link
                 if (ArticleNode.Name == "link")
-                {
                     // Links can be in href attribute, so check that.
                     if (ArticleNode.Attributes.Count != 0 & ArticleNode.Attributes.GetNamedItem("href") is not null)
-                    {
                         Link = ArticleNode.Attributes.GetNamedItem("href").InnerText;
-                    }
                     else
-                    {
                         Link = ArticleNode.InnerText;
-                    }
-                }
 
                 // Check the summary
                 if (ArticleNode.Name == "summary" | ArticleNode.Name == "content" | ArticleNode.Name == "description")
@@ -152,25 +134,18 @@ namespace Syndian
                             // Some feeds have no node called "pre," so work around this...
                             var PreNode = HtmlContent.DocumentNode.SelectSingleNode("pre");
                             if (PreNode is null)
-                            {
                                 Description = HtmlContent.DocumentNode.InnerText;
-                            }
                             else
-                            {
                                 Description = PreNode.InnerText;
-                            }
                         }
                         else
-                        {
                             Description = ArticleNode.InnerText.Trim(Convert.ToChar(Convert.ToChar(13)), Convert.ToChar(Convert.ToChar(10)), ' ');
-                        }
                     }
                     else
-                    {
                         Description = ArticleNode.InnerText.Trim(Convert.ToChar(Convert.ToChar(13)), Convert.ToChar(Convert.ToChar(10)), ' ');
-                    }
                 }
-                Parameters.AddIfNotFound(ArticleNode.Name, ArticleNode);
+                if (!Parameters.ContainsKey(ArticleNode.Name))
+                    Parameters.Add(ArticleNode.Name, ArticleNode);
             }
             return new RSSArticle(Title, Link, Description, Parameters);
         }
@@ -186,52 +161,27 @@ namespace Syndian
             switch (FeedType)
             {
                 case RSSFeedType.RSS2:
-                    {
-                        foreach (XmlNode Node in FeedNode[0]) // <channel>
-                        {
-                            foreach (XmlNode Child in Node.ChildNodes)
-                            {
-                                if (Child.Name == FeedProperty)
-                                {
-                                    return Child.InnerXml;
-                                }
-                            }
-                        }
+                    foreach (XmlNode Node in FeedNode[0]) // <channel>
+                        foreach (XmlNode Child in Node.ChildNodes)
+                            if (Child.Name == FeedProperty)
+                                return Child.InnerXml;
 
-                        break;
-                    }
+                    break;
                 case RSSFeedType.RSS1:
-                    {
-                        foreach (XmlNode Node in FeedNode[0]) // <channel> or <item>
-                        {
-                            foreach (XmlNode Child in Node.ChildNodes)
-                            {
-                                if (Child.Name == FeedProperty)
-                                {
-                                    return Child.InnerXml;
-                                }
-                            }
-                        }
+                    foreach (XmlNode Node in FeedNode[0]) // <channel> or <item>
+                        foreach (XmlNode Child in Node.ChildNodes)
+                            if (Child.Name == FeedProperty)
+                                return Child.InnerXml;
 
-                        break;
-                    }
+                    break;
                 case RSSFeedType.Atom:
-                    {
-                        foreach (XmlNode Node in FeedNode[0]) // Children of <feed>
-                        {
-                            if (Node.Name == FeedProperty)
-                            {
-                                return Node.InnerXml;
-                            }
-                        }
+                    foreach (XmlNode Node in FeedNode[0]) // Children of <feed>
+                        if (Node.Name == FeedProperty)
+                            return Node.InnerXml;
 
-                        break;
-                    }
-
+                    break;
                 default:
-                    {
-                        throw new RSSException("Invalid RSS feed type.");
-                    }
+                    throw new RSSException("Invalid RSS feed type.");
             }
             return "";
         }
