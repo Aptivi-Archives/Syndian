@@ -73,9 +73,9 @@ namespace Syndian.Instance
         /// <param name="ArticleVariables">Article variables as <see cref="XmlNode"/>s</param>
         internal RSSArticle(string ArticleTitle, string ArticleLink, string ArticleDescription, Dictionary<string, XmlNode> ArticleVariables)
         {
-            articleTitle = ArticleTitle.Trim();
-            articleLink = ArticleLink.Trim();
-            articleDescription = ArticleDescription.Trim();
+            articleTitle = !string.IsNullOrWhiteSpace(ArticleTitle) ? ArticleTitle.Trim() : "";
+            articleLink = !string.IsNullOrWhiteSpace(ArticleLink) ? ArticleLink.Trim() : "";
+            articleDescription = !string.IsNullOrWhiteSpace(ArticleDescription) ? ArticleDescription.Trim() : "";
             articleVariables = ArticleVariables;
         }
 
