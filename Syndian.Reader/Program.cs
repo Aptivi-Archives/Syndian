@@ -42,6 +42,7 @@ namespace Syndian.Reader
 
             // Populate the RSS info
             var feed = new RSSFeed(args[0], RSSFeedType.Infer);
+            feed.Refresh();
             Console.WriteLine("Title: {0}", feed.FeedTitle);
             Console.WriteLine("Description: {0}", feed.FeedDescription);
             Console.WriteLine("URL: {0}\n", feed.FeedUrl);

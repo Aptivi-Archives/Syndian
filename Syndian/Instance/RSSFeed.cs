@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace Syndian.Instance
@@ -78,7 +79,10 @@ namespace Syndian.Instance
         /// <param name="FeedUrl">A URL to RSS feed</param>
         /// <param name="FeedType">A feed type to parse. If set to Infer, it will automatically detect the type based on contents.</param>
         public RSSFeed(string FeedUrl, RSSFeedType FeedType)
-            => Refresh(FeedUrl, FeedType);
+        {
+            _FeedUrl = FeedUrl;
+            _FeedType = FeedType;
+        }
 
         /// <summary>
         /// Refreshes the RSS class instance
@@ -100,42 +104,70 @@ namespace Syndian.Instance
             var FeedStream = FeedWebRequest.Content.ReadAsStreamAsync().Result;
             var FeedDocument = new XmlDocument();
             FeedDocument.Load(FeedStream);
+            Finalize(FeedDocument, FeedType);
+        }
+
+        /// <summary>
+        /// Refreshes the RSS class instance
+        /// </summary>
+        public async Task RefreshAsync()
+            => await RefreshAsync(_FeedUrl, _FeedType);
+
+        /// <summary>
+        /// Refreshes the RSS class instance
+        /// </summary>
+        /// <param name="FeedUrl">A URL to RSS feed</param>
+        /// <param name="FeedType">A feed type to parse. If set to Infer, it will automatically detect the type based on contents.</param>
+        public async Task RefreshAsync(string FeedUrl, RSSFeedType FeedType)
+        {
+            // Make a web request indicator
+            var FeedWebRequest = await RSSTools.Client.GetAsync(FeedUrl);
+
+            // Load the RSS feed and get the feed XML document
+            var FeedStream = await FeedWebRequest.Content.ReadAsStreamAsync();
+            var FeedDocument = new XmlDocument();
+            FeedDocument.Load(FeedStream);
+            Finalize(FeedDocument, FeedType);
+        }
+
+        internal void Finalize(XmlDocument feedDocument, RSSFeedType feedType)
+        {
 
             // Infer feed type
             var FeedNodeList = default(XmlNodeList);
-            if (FeedType == RSSFeedType.Infer)
+            if (feedType == RSSFeedType.Infer)
             {
-                if (FeedDocument.GetElementsByTagName("rss").Count != 0)
+                if (feedDocument.GetElementsByTagName("rss").Count != 0)
                 {
-                    FeedNodeList = FeedDocument.GetElementsByTagName("rss");
+                    FeedNodeList = feedDocument.GetElementsByTagName("rss");
                     _FeedType = RSSFeedType.RSS2;
                 }
-                else if (FeedDocument.GetElementsByTagName("rdf:RDF").Count != 0)
+                else if (feedDocument.GetElementsByTagName("rdf:RDF").Count != 0)
                 {
-                    FeedNodeList = FeedDocument.GetElementsByTagName("rdf:RDF");
+                    FeedNodeList = feedDocument.GetElementsByTagName("rdf:RDF");
                     _FeedType = RSSFeedType.RSS1;
                 }
-                else if (FeedDocument.GetElementsByTagName("feed").Count != 0)
+                else if (feedDocument.GetElementsByTagName("feed").Count != 0)
                 {
-                    FeedNodeList = FeedDocument.GetElementsByTagName("feed");
+                    FeedNodeList = feedDocument.GetElementsByTagName("feed");
                     _FeedType = RSSFeedType.Atom;
                 }
             }
-            else if (FeedType == RSSFeedType.RSS2)
+            else if (feedType == RSSFeedType.RSS2)
             {
-                FeedNodeList = FeedDocument.GetElementsByTagName("rss");
+                FeedNodeList = feedDocument.GetElementsByTagName("rss");
                 if (FeedNodeList.Count == 0)
                     throw new RSSException("Invalid RSS2 feed.");
             }
-            else if (FeedType == RSSFeedType.RSS1)
+            else if (feedType == RSSFeedType.RSS1)
             {
-                FeedNodeList = FeedDocument.GetElementsByTagName("rdf:RDF");
+                FeedNodeList = feedDocument.GetElementsByTagName("rdf:RDF");
                 if (FeedNodeList.Count == 0)
                     throw new RSSException("Invalid RSS1 feed.");
             }
-            else if (FeedType == RSSFeedType.Atom)
+            else if (feedType == RSSFeedType.Atom)
             {
-                FeedNodeList = FeedDocument.GetElementsByTagName("feed");
+                FeedNodeList = feedDocument.GetElementsByTagName("feed");
                 if (FeedNodeList.Count == 0)
                     throw new RSSException("Invalid Atom feed.");
             }
