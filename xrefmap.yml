@@ -78,18 +78,24 @@ references:
   fullName: Syndian.Instance.RSSFeed
   nameWithType: RSSFeed
 - uid: Syndian.Instance.RSSFeed.#ctor(System.String,Syndian.Instance.RSSFeedType)
-  name: RSSFeed(String, RSSFeedType)
+  name: RSSFeed(string, RSSFeedType)
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed__ctor_System_String_Syndian_Instance_RSSFeedType_
   commentId: M:Syndian.Instance.RSSFeed.#ctor(System.String,Syndian.Instance.RSSFeedType)
-  fullName: Syndian.Instance.RSSFeed.RSSFeed(System.String, Syndian.Instance.RSSFeedType)
-  nameWithType: RSSFeed.RSSFeed(String, RSSFeedType)
+  name.vb: New(String, RSSFeedType)
+  fullName: Syndian.Instance.RSSFeed.RSSFeed(string, Syndian.Instance.RSSFeedType)
+  fullName.vb: Syndian.Instance.RSSFeed.New(String, Syndian.Instance.RSSFeedType)
+  nameWithType: RSSFeed.RSSFeed(string, RSSFeedType)
+  nameWithType.vb: RSSFeed.New(String, RSSFeedType)
 - uid: Syndian.Instance.RSSFeed.#ctor*
   name: RSSFeed
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed__ctor_
   commentId: Overload:Syndian.Instance.RSSFeed.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: Syndian.Instance.RSSFeed.RSSFeed
+  fullName.vb: Syndian.Instance.RSSFeed.New
   nameWithType: RSSFeed.RSSFeed
+  nameWithType.vb: RSSFeed.New
 - uid: Syndian.Instance.RSSFeed.FeedArticles
   name: FeedArticles
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed_FeedArticles
@@ -162,11 +168,14 @@ references:
   fullName: Syndian.Instance.RSSFeed.Refresh()
   nameWithType: RSSFeed.Refresh()
 - uid: Syndian.Instance.RSSFeed.Refresh(System.String,Syndian.Instance.RSSFeedType)
-  name: Refresh(String, RSSFeedType)
+  name: Refresh(string, RSSFeedType)
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed_Refresh_System_String_Syndian_Instance_RSSFeedType_
   commentId: M:Syndian.Instance.RSSFeed.Refresh(System.String,Syndian.Instance.RSSFeedType)
-  fullName: Syndian.Instance.RSSFeed.Refresh(System.String, Syndian.Instance.RSSFeedType)
-  nameWithType: RSSFeed.Refresh(String, RSSFeedType)
+  name.vb: Refresh(String, RSSFeedType)
+  fullName: Syndian.Instance.RSSFeed.Refresh(string, Syndian.Instance.RSSFeedType)
+  fullName.vb: Syndian.Instance.RSSFeed.Refresh(String, Syndian.Instance.RSSFeedType)
+  nameWithType: RSSFeed.Refresh(string, RSSFeedType)
+  nameWithType.vb: RSSFeed.Refresh(String, RSSFeedType)
 - uid: Syndian.Instance.RSSFeed.Refresh*
   name: Refresh
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed_Refresh_
@@ -181,11 +190,14 @@ references:
   fullName: Syndian.Instance.RSSFeed.RefreshAsync()
   nameWithType: RSSFeed.RefreshAsync()
 - uid: Syndian.Instance.RSSFeed.RefreshAsync(System.String,Syndian.Instance.RSSFeedType)
-  name: RefreshAsync(String, RSSFeedType)
+  name: RefreshAsync(string, RSSFeedType)
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed_RefreshAsync_System_String_Syndian_Instance_RSSFeedType_
   commentId: M:Syndian.Instance.RSSFeed.RefreshAsync(System.String,Syndian.Instance.RSSFeedType)
-  fullName: Syndian.Instance.RSSFeed.RefreshAsync(System.String, Syndian.Instance.RSSFeedType)
-  nameWithType: RSSFeed.RefreshAsync(String, RSSFeedType)
+  name.vb: RefreshAsync(String, RSSFeedType)
+  fullName: Syndian.Instance.RSSFeed.RefreshAsync(string, Syndian.Instance.RSSFeedType)
+  fullName.vb: Syndian.Instance.RSSFeed.RefreshAsync(String, Syndian.Instance.RSSFeedType)
+  nameWithType: RSSFeed.RefreshAsync(string, RSSFeedType)
+  nameWithType.vb: RSSFeed.RefreshAsync(String, RSSFeedType)
 - uid: Syndian.Instance.RSSFeed.RefreshAsync*
   name: RefreshAsync
   href: api/Syndian.Instance.RSSFeed.html#Syndian_Instance_RSSFeed_RefreshAsync_
@@ -229,12 +241,15 @@ references:
   commentId: T:Syndian.RSSTools
   fullName: Syndian.RSSTools
   nameWithType: RSSTools
-- uid: Syndian.RSSTools.GetFeedProperty(System.String,XmlNodeList,Syndian.Instance.RSSFeedType)
-  name: GetFeedProperty(String, XmlNodeList, RSSFeedType)
-  href: api/Syndian.RSSTools.html#Syndian_RSSTools_GetFeedProperty_System_String_XmlNodeList_Syndian_Instance_RSSFeedType_
-  commentId: M:Syndian.RSSTools.GetFeedProperty(System.String,XmlNodeList,Syndian.Instance.RSSFeedType)
-  fullName: Syndian.RSSTools.GetFeedProperty(System.String, XmlNodeList, Syndian.Instance.RSSFeedType)
-  nameWithType: RSSTools.GetFeedProperty(String, XmlNodeList, RSSFeedType)
+- uid: Syndian.RSSTools.GetFeedProperty(System.String,System.Xml.XmlNodeList,Syndian.Instance.RSSFeedType)
+  name: GetFeedProperty(string, XmlNodeList, RSSFeedType)
+  href: api/Syndian.RSSTools.html#Syndian_RSSTools_GetFeedProperty_System_String_System_Xml_XmlNodeList_Syndian_Instance_RSSFeedType_
+  commentId: M:Syndian.RSSTools.GetFeedProperty(System.String,System.Xml.XmlNodeList,Syndian.Instance.RSSFeedType)
+  name.vb: GetFeedProperty(String, XmlNodeList, RSSFeedType)
+  fullName: Syndian.RSSTools.GetFeedProperty(string, System.Xml.XmlNodeList, Syndian.Instance.RSSFeedType)
+  fullName.vb: Syndian.RSSTools.GetFeedProperty(String, System.Xml.XmlNodeList, Syndian.Instance.RSSFeedType)
+  nameWithType: RSSTools.GetFeedProperty(string, XmlNodeList, RSSFeedType)
+  nameWithType.vb: RSSTools.GetFeedProperty(String, XmlNodeList, RSSFeedType)
 - uid: Syndian.RSSTools.GetFeedProperty*
   name: GetFeedProperty
   href: api/Syndian.RSSTools.html#Syndian_RSSTools_GetFeedProperty_
@@ -242,11 +257,11 @@ references:
   isSpec: "True"
   fullName: Syndian.RSSTools.GetFeedProperty
   nameWithType: RSSTools.GetFeedProperty
-- uid: Syndian.RSSTools.MakeArticleFromFeed(XmlNode)
+- uid: Syndian.RSSTools.MakeArticleFromFeed(System.Xml.XmlNode)
   name: MakeArticleFromFeed(XmlNode)
-  href: api/Syndian.RSSTools.html#Syndian_RSSTools_MakeArticleFromFeed_XmlNode_
-  commentId: M:Syndian.RSSTools.MakeArticleFromFeed(XmlNode)
-  fullName: Syndian.RSSTools.MakeArticleFromFeed(XmlNode)
+  href: api/Syndian.RSSTools.html#Syndian_RSSTools_MakeArticleFromFeed_System_Xml_XmlNode_
+  commentId: M:Syndian.RSSTools.MakeArticleFromFeed(System.Xml.XmlNode)
+  fullName: Syndian.RSSTools.MakeArticleFromFeed(System.Xml.XmlNode)
   nameWithType: RSSTools.MakeArticleFromFeed(XmlNode)
 - uid: Syndian.RSSTools.MakeArticleFromFeed*
   name: MakeArticleFromFeed
@@ -255,11 +270,11 @@ references:
   isSpec: "True"
   fullName: Syndian.RSSTools.MakeArticleFromFeed
   nameWithType: RSSTools.MakeArticleFromFeed
-- uid: Syndian.RSSTools.MakeRssArticlesFromFeed(XmlNodeList,Syndian.Instance.RSSFeedType)
+- uid: Syndian.RSSTools.MakeRssArticlesFromFeed(System.Xml.XmlNodeList,Syndian.Instance.RSSFeedType)
   name: MakeRssArticlesFromFeed(XmlNodeList, RSSFeedType)
-  href: api/Syndian.RSSTools.html#Syndian_RSSTools_MakeRssArticlesFromFeed_XmlNodeList_Syndian_Instance_RSSFeedType_
-  commentId: M:Syndian.RSSTools.MakeRssArticlesFromFeed(XmlNodeList,Syndian.Instance.RSSFeedType)
-  fullName: Syndian.RSSTools.MakeRssArticlesFromFeed(XmlNodeList, Syndian.Instance.RSSFeedType)
+  href: api/Syndian.RSSTools.html#Syndian_RSSTools_MakeRssArticlesFromFeed_System_Xml_XmlNodeList_Syndian_Instance_RSSFeedType_
+  commentId: M:Syndian.RSSTools.MakeRssArticlesFromFeed(System.Xml.XmlNodeList,Syndian.Instance.RSSFeedType)
+  fullName: Syndian.RSSTools.MakeRssArticlesFromFeed(System.Xml.XmlNodeList, Syndian.Instance.RSSFeedType)
   nameWithType: RSSTools.MakeRssArticlesFromFeed(XmlNodeList, RSSFeedType)
 - uid: Syndian.RSSTools.MakeRssArticlesFromFeed*
   name: MakeRssArticlesFromFeed
